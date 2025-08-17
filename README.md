@@ -24,8 +24,9 @@ A web-based weather forecast application(CRUD Operation) built with **Python (Fl
 
 ### 1. Clone the repository
 
-git clone https://github.com/dineshkumarmandal/WeatherAppAdvance.git
-cd WeatherAppAdvance
+    git clone https://github.com/dineshkumarmandal/WeatherAppAdvance.git
+    
+    cd WeatherAppAdvance
 
 ### 2. Create Database (MySQL)
     Database Name : weatherappadvance
