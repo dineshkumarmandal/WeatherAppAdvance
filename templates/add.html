@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Location Details</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Enter Location Details</h2>
+        {% if error %}
+        <p style="color: red;">{{ error }}</p>
+        {% endif %}
+         <button class="btn btn-primary" onclick="window.location.href='{{ url_for('view_locations') }}'">Go to Location List</button>
+        <form method="POST" action="/add">
+            
+            <div class="mb-3">
+                <label>Landmarks:</label>
+                <textarea name="landmarks" class="form-control" autocomplete="off" placeholder="Enter landmarks">{{ loc.LANDMARKS }}</textarea>
+            </div>
+           
+            <div class="mb-3">
+                <label>City:</label>
+                <input type="text" name="city" class="form-control" autocomplete="off" placeholder="Enter city" value="{{ loc.CITY }}">
+
+            </div>
+            
+             <div class="mb-3">
+            <label>Country:</label>
+            <input type="text" name="country" class="form-control" autocomplete="off" placeholder="Enter country" value="{{ loc.COUNTRY }}"">
+            </div>
+            <div class="mb-3">
+            <label>Zip Code:</label>
+            <input type="text" name="zip_code" class="form-control" autocomplete="off" placeholder="Enter zip code" value="{{ loc.ZIP_CODE }}">
+            </div>
+
+            <div class="mb-3">
+                <div class="row">
+                     <div class="col-md-3">
+                        <label >Forecast Range (Start Date):</label>
+                        <input type="date" name="forecast_start_date" class="form-control " autocomplete="off" required style="width: 200px;" value="{{ loc.FORECAST_START_DATE }}">
+                    </div>
+                    <div class="col-md-3">
+                         <label>Forecast Range (End Date):</label>
+                        <input type="date" name="forecast_end_date" class="form-control" style="width: 200px;" autocomplete="off" required value="{{ loc.FORECAST_END_DATE }}">
+                    </div>
+                   
+                    <div class="col-md-6"></div>
+                </div>
+            
+            </div>
+            <div class="mb-3">
+            <label>Email Address:</label>
+            <input type="email" name="emailId" class="form-control" autocomplete="off" placeholder="Enter email address" required value="{{ loc.EMAIL_ID }}">
+            </div>
+            <br/>
+            <input type="hidden" name="id" class="form-control"  value="{{ loc.ID }}">
+            <input type="submit" value="Submit" class="btn btn-success">
+        </form>
+    </div>
+
+    
+</body>
+</html>

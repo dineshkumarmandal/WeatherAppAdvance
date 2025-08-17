@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Location Details</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        {% if error %}
+        <p style="color: red;">{{ error }}</p>
+        {% endif %}
+        {% if success %}
+        <p style="color: green;">{{ success }}</p>
+        {% endif %}
+        {% if message %}
+        <p style="color: green;">{{ message }}</p>
+        {% endif %}
+        <h2>Location Details</h2>
+        <button class="btn btn-primary" onclick="window.location.href='{{ url_for('add_location') }}'">Go to Add Location</button>
+
+        
+        <table class="table">
+            <thead>
+            <tr>
+                <th>GPS</th>
+                <th>LANDMARKS</th>
+                <th>CITY</th>
+                <th>COUNTRY</th>
+                <th>ZIP CODE</th>
+                <th>FORECAST RANGE</th>
+                <th>EMAIL ADDRESS</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+               
+                {% for loc in locations %}
+                <tr>
+                <td>lat-{{ loc.LATITUDE }}, long-{{ loc.LONGITUDE }}</td>
+                <td>{{ loc.LANDMARKS }}</td>
+                <td>{{ loc.CITY }}</td>
+                <td>{{ loc.COUNTRY }}</td>
+                <td>{{ loc.ZIP_CODE }}</td>
+                <td>{{ loc.FORECAST_START_DATE }} - {{ loc.FORECAST_END_DATE }}</td>
+                <td>{{ loc.EMAIL_ID }}</td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-xs">Show Weather</button>
+                    <a class="btn btn-warning btn-xs"href="/edit/{{ loc.ID }}">Edit</button>
+                    <a class="btn btn-danger btn-xs"href="/delete/{{ loc.ID }}">Delete</button>
+                </td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+</body>
+ 
+</html>
